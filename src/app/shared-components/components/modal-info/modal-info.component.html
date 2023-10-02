@@ -1,0 +1,7 @@
+<span>{{status}}</span>
+<h2>{{title}}</h2>
+<h3>{{message}}</h3>
+<div>
+    <button (click)="cancel()" *ngIf="buttonCancelText">{{buttonCancelText}}</button>
+    <button (click)="sumbit()" *ngIf="buttonSubmitText">{{buttonSubmitText}}</button>
+</div>

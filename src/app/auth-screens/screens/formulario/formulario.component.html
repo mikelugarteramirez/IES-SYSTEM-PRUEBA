@@ -1,0 +1,40 @@
+<shared-navbar></shared-navbar>
+<form [formGroup]="form">
+    <mat-form-field>
+        <mat-label>Nombres:</mat-label>
+        <input matInput placeholder="Nombres" formControlName="nombres">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Apellidos:</mat-label>
+        <input matInput placeholder="Apellidos" formControlName="apellidos">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Estado civil:</mat-label>
+        <mat-select formControlName="estadoCivil">
+          <mat-option *ngFor="let opcion of estadoCivilOptions" [value]="opcion">
+            {{opcion}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-radio-group formControlName="fumas" aria-label="Fumas:">
+        <mat-radio-button [value]="true">Si</mat-radio-button>
+        <mat-radio-button [value]="false">No</mat-radio-button>
+    </mat-radio-group>
+    <mat-radio-group (change)="actualmentePracticasLecturaEventChange()" formControlName="actualmentePracticasLectura" aria-label="¿Actualmente practicas lectura?:">
+        <mat-radio-button [value]="true">Si</mat-radio-button>
+        <mat-radio-button [value]="false">No</mat-radio-button>
+    </mat-radio-group>
+    <h3>Libros leidos</h3>
+    <div>
+        <div *ngFor="let libroLeido of librosLeidosFormArray.controls; let i = index;">
+            <mat-form-field>
+                <mat-label>Nombre de libro {{i+1}}:</mat-label>
+                <input matInput placeholder="Nombre" [formControl]="libroLeido">
+            </mat-form-field>
+            <button (click)="eliminarLibroLeido(i)">Delete</button>
+        </div>
+        <button (click)="agregarLibroLeido()">Agregar Libro</button>
+    </div>
+</form>
+
+<button [disabled]="form.invalid" (click)="enviarInfo()">Enviar</button>
