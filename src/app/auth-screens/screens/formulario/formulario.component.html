@@ -1,14 +1,15 @@
 <shared-navbar></shared-navbar>
-<form [formGroup]="form">
-    <mat-form-field>
+<p class="h2 mt-5">Formulario</p>
+<form [formGroup]="form" class="row container-fluid">
+    <mat-form-field class="col-sm-6">
         <mat-label>Nombres:</mat-label>
         <input matInput placeholder="Nombres" formControlName="nombres">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="col-sm-6">
         <mat-label>Apellidos:</mat-label>
         <input matInput placeholder="Apellidos" formControlName="apellidos">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="col-sm-12">
         <mat-label>Estado civil:</mat-label>
         <mat-select formControlName="estadoCivil">
           <mat-option *ngFor="let opcion of estadoCivilOptions" [value]="opcion">
@@ -16,25 +17,34 @@
           </mat-option>
         </mat-select>
     </mat-form-field>
-    <mat-radio-group formControlName="fumas" aria-label="Fumas:">
-        <mat-radio-button [value]="true">Si</mat-radio-button>
-        <mat-radio-button [value]="false">No</mat-radio-button>
-    </mat-radio-group>
-    <mat-radio-group (change)="actualmentePracticasLecturaEventChange()" formControlName="actualmentePracticasLectura" aria-label="¿Actualmente practicas lectura?:">
-        <mat-radio-button [value]="true">Si</mat-radio-button>
-        <mat-radio-button [value]="false">No</mat-radio-button>
-    </mat-radio-group>
-    <h3>Libros leidos</h3>
-    <div>
-        <div *ngFor="let libroLeido of librosLeidosFormArray.controls; let i = index;">
-            <mat-form-field>
-                <mat-label>Nombre de libro {{i+1}}:</mat-label>
-                <input matInput placeholder="Nombre" [formControl]="libroLeido">
-            </mat-form-field>
-            <button (click)="eliminarLibroLeido(i)">Delete</button>
+    <div class="col-sm-6 radio-button">
+        <label>Fumas:</label>
+        <mat-radio-group formControlName="fumas">
+            <mat-radio-button [color]="color" [value]="true"><div class="valor">Si</div></mat-radio-button>
+            <mat-radio-button [color]="color" [value]="false"><div class="valor">No</div></mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class="col-sm-6 radio-button">
+        <label>¿Actualmente practicas lectura?:</label>
+        <mat-radio-group (change)="actualmentePracticasLecturaEventChange()" formControlName="actualmentePracticasLectura">
+            <mat-radio-button [color]="color" [value]="true"><div class="valor">Si</div></mat-radio-button>
+            <mat-radio-button [color]="color" [value]="false"><div class="valor">No</div></mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class="col-sm-12">
+        <h3 *ngIf="actualmentePracticasLecturaControl.value">Libros leidos</h3>
+        <div *ngIf="actualmentePracticasLecturaControl.value" class="row">
+            <div class="col-sm-5 mr-2" *ngFor="let libroLeido of librosLeidosFormArray.controls; let i = index;">
+                <div class="row mb-4">
+                    <input class="form-control col-sm-9" type="text" [formControl]="libroLeido" placeholder="Nombre de libro {{i+1}}:" >
+                    <button class="btn btn-outline-danger col-sm-3" [disabled]="!actualmentePracticasLecturaControl.value" (click)="eliminarLibroLeido(i)">Delete</button>
+                </div>
+            </div>
         </div>
-        <button (click)="agregarLibroLeido()">Agregar Libro</button>
+        <button *ngIf="actualmentePracticasLecturaControl.value" class="col-sm-12 btn btn-outline-primary mb-3" (click)="agregarLibroLeido()">Agregar Libro</button>
+        <button class="col-sm-12 btn btn-outline-success" [disabled]="form.invalid" (click)="enviarInfo()">Enviar</button>
     </div>
 </form>
-
-<button [disabled]="form.invalid" (click)="enviarInfo()">Enviar</button>
+<div>
+    {{printData | json}}
+</div>

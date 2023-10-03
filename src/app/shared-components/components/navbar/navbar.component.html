@@ -1,9 +1,19 @@
 <nav>
-    <ul>
-        <li routerLink="/session/inicio">Inicio</li>
-        <li routerLink="/session/conversiones">Conversiones</li>
-        <li routerLink="/session/calculadora-fechas">Calculadora de fecha</li>
-        <li routerLink="/session/formulario">Formulario</li>
-        <li (click)="logout()">Cerrar sesión</li>
+    <ul class="nav nav-tabs">
+        <li style="cursor: pointer;" class="nav-item" routerLink="/session/inicio">
+            <a class="nav-link" routerLinkActive="active">Inicio</a>
+        </li>
+        <li style="cursor: pointer;" class="nav-item" routerLink="/session/conversiones">
+            <a class="nav-link" routerLinkActive="active">Conversiones</a>
+        </li>
+        <li style="cursor: pointer;" class="nav-item" routerLink="/session/calculadora-fechas">
+            <a class="nav-link" routerLinkActive="active">Calculadora de fecha</a>
+        </li>
+        <li style="cursor: pointer;" class="nav-item" routerLink="/session/formulario">
+            <a class="nav-link" routerLinkActive="active">Formulario</a>
+        </li>
+        <li style="cursor: pointer;" class="nav-item" (click)="logout()">
+            <a class="nav-link disabled">Cerrar sesión</a>
+        </li>
     </ul>
 </nav>

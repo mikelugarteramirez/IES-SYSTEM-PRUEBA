@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { CatalogosService } from 'src/app/services/catalogos.service';
 import { lastSpaceValidator } from 'src/app/validators/last-space.validator';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
     selector: 'auth-formulario',
-    templateUrl: 'formulario.component.html'
+    templateUrl: 'formulario.component.html',
+    styleUrls: ['formulario.component.css']
 })
 
 export class AuthFormularioComponent {
@@ -14,6 +16,10 @@ export class AuthFormularioComponent {
             this.estadoCivilOptions = value;
         })
     }
+
+    color: ThemePalette = "warn";
+
+    printData: any = '';
 
     estadoCivilOptions: number[] = [];
 
@@ -24,7 +30,7 @@ export class AuthFormularioComponent {
         actualmentePracticasLectura: new FormControl<null | boolean>(null, [Validators.required]),
         estadoCivil: new FormControl(null),
         librosLeidosUltimosTresMeses: new FormArray([
-            new FormControl({value: null, disabled: false}, [Validators.required])
+            new FormControl({value: null, disabled: true}, [])
         ])
     });
 
@@ -69,6 +75,6 @@ export class AuthFormularioComponent {
     }
 
     enviarInfo() {
-
+        this.printData = this.form.value;
     }
 }

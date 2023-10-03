@@ -12,10 +12,10 @@ export class AuthWelcomePageComponent implements OnInit {
   constructor(private authService: AuthService, public dialog: MatDialog) { }
 
   name: string = '';
-  firstText: string = ' Bienvenido a mi portal.';
+  firstText: string = ' Bienvenido a mi portal';
   secondText: string = 'Nos podrías indicar tu nombre';
   thrithText: string = 'El nombre ingresado es';
-  buttonText: string = 'Escribe tu nombre.';
+  buttonText: string = 'Escribe tu nombre';
 
   ngOnInit() {
     this.authService.getUserName.subscribe((value) => {

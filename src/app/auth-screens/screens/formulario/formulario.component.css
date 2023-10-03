@@ -1,0 +1,7 @@
+.valor {
+    color: red;
+}
+.radio-button {
+    flex-direction: column;
+    display: flex;
+}

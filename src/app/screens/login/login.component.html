@@ -1,5 +1,8 @@
-<form [formGroup]="form">
-    <input type="text" formControlName="username">
-    <input type="text" formControlName="password">
-    <button (click)="login(form.value)">INICIAR SESION</button>
-</form>
+<div class="container d-flex" style="height: 100vh;">
+    <form class="row card m-auto p-5" style="max-width: 400px; width: 100%;" [formGroup]="form">
+        <p class="h3">Bienvenido</p>
+        <input class="col-12 mb-3 form-control" placeholder="Nombre de usuario: " type="text" formControlName="username">
+        <input class="col-12 mb-3 form-control" placeholder="Contraseña: " type="password" formControlName="password">
+        <button [disabled]="form.invalid" class="col-12 btn btn-outline-dark" (click)="login(form.value)">INICIAR SESION</button>
+    </form>
+</div>

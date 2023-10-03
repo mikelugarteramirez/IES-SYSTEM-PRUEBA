@@ -1,7 +1,9 @@
-<span>{{status}}</span>
-<h2>{{title}}</h2>
-<h3>{{message}}</h3>
-<div>
-    <button (click)="cancel()" *ngIf="buttonCancelText">{{buttonCancelText}}</button>
-    <button (click)="sumbit()" *ngIf="buttonSubmitText">{{buttonSubmitText}}</button>
+<div class="container-fluid d-flex flex-column p-4" style="align-items: center;">
+    <!-- <span >{{status}}</span> -->
+    <p class="h3 text-danger">{{title}}</p>
+    <p class="h6 text-light">{{message}}</p>
+    <div>
+        <button class="btn btn-danger mr-3" (click)="cancel()" *ngIf="buttonCancelText">{{buttonCancelText}}</button>
+        <button class="btn btn-outline-success" (click)="sumbit()" *ngIf="buttonSubmitText">{{buttonSubmitText}}</button>
+    </div>
 </div>
