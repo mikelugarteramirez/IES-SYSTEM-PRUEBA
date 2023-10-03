@@ -12,7 +12,8 @@ export class AuthWelcomePageComponent implements OnInit {
   constructor(private authService: AuthService, public dialog: MatDialog) { }
 
   name: string = '';
-  firstText: string = ' Bienvenido a mi portal';
+  firstText: string = ' Bienvenido a ';
+  firstText2: string = 'mi portal';
   secondText: string = 'Nos podrías indicar tu nombre';
   thrithText: string = 'El nombre ingresado es';
   buttonText: string = 'Escribe tu nombre';

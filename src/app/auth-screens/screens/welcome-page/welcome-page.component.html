@@ -1,7 +1,7 @@
 <shared-navbar></shared-navbar>
 <div class="row banner">
     <div class="m-auto d-flex flex-column ">
-        <h2 class="text-warning m-auto"><strong>{{firstText}}</strong></h2>
+        <h2 class="text-warning m-auto"><strong><span>{{firstText}} <span class="text-light">{{firstText2}}</span></span></strong></h2>
         <h3 class="text-light m-auto">{{secondText}}</h3>
         <h4 *ngIf="name" class="text-light m-auto">{{thrithText}} {{name | cambioLetras}}</h4>
         <button class="btn btn-outline-light m-auto" (click)="captureName()">{{name ? 'Cambiar nombre' :buttonText}}</button>
